@@ -33,14 +33,13 @@ td {
 
 th:nth-child(2),
 td:nth-child(2) {
-  width: 20%; /* 名前 */
+  width: 22%; /* 名前 */
 }
 
 th:nth-child(7),
 td:nth-child(7) {
-  width: 24%; /* 備考 */
-  white-space: normal; /* 折り返しを許可 */
-  word-wrap: break-word; /* 長い単語を折り返す */
+  width: 22%; /* 備考 */
+  white-space: nowrap;
 }
 
 th:nth-child(1),
