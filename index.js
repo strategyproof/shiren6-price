@@ -140,7 +140,7 @@ function displayResults(results) {
     const row = document.createElement("tr");
     if (item[3] === "呪い") row.classList.add("cursed");
     if (item[3] === "祝福") row.classList.add("blessed");
-    if (item[7] === "1") row.classList.add("artificial");
+    if (item[7] === "1") row.classList.add("non-default");
 
     // 分類が変わったら新しいクラスを追加
     if (item[0] !== previousCategory) {
@@ -153,13 +153,34 @@ function displayResults(results) {
       previousPrice = item[4];
     }
 
+    // Check if the price matches the search criteria
+    const price = document.getElementById("price").value;
+    const priceTarget = document.querySelector(
+      'input[name="price_target"]:checked'
+    )?.value;
+    const buyPrice = item[4].replace(/,/g, "");
+    const sellPrice = item[5].replace(/,/g, "");
+
+    const buyPriceDisplay =
+      price &&
+      (priceTarget === "すべて" || priceTarget === "買値") &&
+      buyPrice === price
+        ? `<span class="highlight">${item[4]}</span>`
+        : item[4];
+    const sellPriceDisplay =
+      price &&
+      (priceTarget === "すべて" || priceTarget === "売値") &&
+      sellPrice === price
+        ? `<span class="highlight">${item[5]}</span>`
+        : item[5];
+
     row.innerHTML = `
       <td>${item[0]}</td>
       <td>${item[1]}</td>
       <td>${item[2]}</td>
       <td>${item[3]}</td>
-      <td>${item[4]}</td>
-      <td>${item[5]}</td>
+      <td>${buyPriceDisplay}</td>
+      <td>${sellPriceDisplay}</td>
       <td>${item[6] || ""}</td>
     `;
 
