@@ -1,0 +1,136 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+h1 {
+  color: #333;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+#results {
+  margin-top: 20px;
+  max-width: 1000px; /* テーブルの最大幅を制限 */
+  overflow-x: auto; /* 横スクロールを許可 */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; /* 列幅を固定 */
+}
+
+th,
+td {
+  padding: 5px; /* パディングを減らして行の高さを狭く */
+  border: 1px solid #ccc;
+  font-size: 14px; /* フォントサイズを少し大きく */
+  white-space: nowrap; /* 折り返ししない */
+}
+
+th:nth-child(2),
+td:nth-child(2) {
+  width: 20%; /* 名前 */
+}
+
+th:nth-child(7),
+td:nth-child(7) {
+  width: 35%; /* 備考 */
+  white-space: normal; /* 折り返しを許可 */
+  word-wrap: break-word; /* 長い単語を折り返す */
+}
+
+th:nth-child(1),
+td:nth-child(1) {
+  width: 5%; /* 分類 */
+  text-align: center; /* 中央揃え */
+}
+
+th:nth-child(3),
+td:nth-child(3) {
+  width: 5%; /* 回数 */
+  text-align: center; /* 中央揃え */
+}
+
+th:nth-child(4),
+td:nth-child(4) {
+  width: 5%; /* 状態 */
+  text-align: center; /* 中央揃え */
+}
+
+th:nth-child(5),
+td:nth-child(5) {
+  width: 8%; /* 買値 */
+  text-align: right; /* 右揃え */
+}
+
+th:nth-child(6),
+td:nth-child(6) {
+  width: 8%; /* 売値 */
+  text-align: right; /* 右揃え */
+}
+
+tr.cursed {
+  background-color: pink;
+}
+
+tr.blessed {
+  background-color: lightgreen;
+}
+
+tr.artificial {
+  background-color: gray;
+}
+
+/* 名前と備考のヘッダーを左寄せにする */
+table th:nth-child(2),
+table th:nth-child(7) {
+  text-align: left;
+}
+
+/* 買値と売値のヘッダーを中央揃えにする */
+table th:nth-child(5),
+table th:nth-child(6) {
+  text-align: center;
+}
+
+/* 買値と売値のセルは右揃えのまま */
+table td:nth-child(5),
+table td:nth-child(6) {
+  text-align: right;
+}
+
+/* 分類の境目に太線を引く */
+tr.new-category {
+  border-top: 2px solid #000;
+}
+
+/* 最初の行（ヘッダーの次の行）の上の線を消す */
+tbody tr:first-child {
+  border-top: none !important;
+}
+
+/* フォーム要素のスタイリング */
+#search-form {
+  font-size: 18px; /* フォームの文字サイズを小さく */
+}
+
+#search-form label {
+  margin-right: 10px; /* ラベル間の間隔を調整 */
+}
+
+#search-form input[type="radio"],
+#search-form input[type="checkbox"] {
+  margin-right: 1px; /* ラジオボタンとチェックボックスの右側の間隔を調整 */
+}
+
+/* 値段入力フィールドのスタイリング */
+#price {
+  width: 100px; /* 幅を調整 */
+  font-size: 18px; /* 文字サイズ */
+  text-align: right; /* 文字を右寄せに */
+  padding-right: 5px; /* 右側に少しパディングを追加 */
+}
