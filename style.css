@@ -1,97 +1,6 @@
 body {
   font-family: Arial, sans-serif;
-  margin: 20px;
-}
-
-h1 {
-  color: #333;
-}
-
-form {
-  margin-bottom: 20px;
-}
-
-#results {
-  margin-top: 20px;
-  max-width: 1000px;
-  overflow-x: auto;
-}
-
-table,
-#results table,
-.form-table {
-  width: 100%;
-  border-collapse: collapse;
-  table-layout: fixed;
-}
-
-th,
-td,
-#results th,
-#results td {
-  padding: 5px;
-  font-size: 14px;
-  white-space: nowrap;
-}
-
-#results th,
-#results td {
-  border-bottom: 1px solid #999;
-  border-left: none;
-  border-right: none;
-}
-
-#results table {
-  border-top: 1px solid #000;
-}
-
-/* 名前と備考 */
-th:nth-child(2),
-td:nth-child(2),
-th:nth-child(7),
-td:nth-child(7) {
-  width: 22%;
-  text-align: left;
-}
-
-/* 分類、回数、状態 */
-th:nth-child(1),
-td:nth-child(1),
-th:nth-child(3),
-td:nth-child(3),
-th:nth-child(4),
-td:nth-child(4) {
-  width: 8%;
-  text-align: center;
-}
-
-/* 買値と売値 */
-th:nth-child(5),
-td:nth-child(5),
-td:nth-child(6),
-th:nth-child(6) {
-  width: 8%;
-  text-align: right;
-}
-
-tr.cursed {
-  background-color: #ffe6e6;
-}
-
-tr.blessed {
-  background-color: #ccffcc;
-}
-
-tr.non-default {
-  background-color: #e0e0e0;
-}
-
-tr.new-category {
-  border-top: 2px solid #000;
-}
-
-tbody tr:first-child {
-  border-top: none !important;
+  max-width: 800px;
 }
 
 #price {
@@ -101,21 +10,17 @@ tbody tr:first-child {
 }
 
 .form-table {
-  max-width: 1000px;
   border: none;
-}
-
-.form-table th,
-.form-table td {
-  border: none;
+  font-size: 16px;
 }
 
 .form-table td:first-child {
-  width: 45px;
+  text-align: center;
+  width: 70px; /* Adjusted width for the first column */
 }
 
 .form-table td:not(:first-child) {
-  width: 99%;
+  width: calc(100% - 70px); /* Adjusted width for the remaining columns */
 }
 
 .radio-container {
@@ -127,7 +32,73 @@ tbody tr:first-child {
   white-space: normal;
 }
 
-.highlight {
+#results table {
+  border-top: 1px solid #000;
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+#results th,
+#results td {
+  padding: 3px;
+  font-size: 16px;
+  white-space: nowrap;
+  border-bottom: 1px solid #999;
+  border-left: none;
+  border-right: none;
+}
+
+/* 名前と備考 */
+#results th:nth-child(2),
+#results td:nth-child(2),
+#results th:nth-child(7),
+#results td:nth-child(7) {
+  width: 22%;
+  text-align: left;
+}
+
+/* 分類、回数、状態 */
+#results th:nth-child(1),
+#results td:nth-child(1),
+#results th:nth-child(3),
+#results td:nth-child(3),
+#results th:nth-child(4),
+#results td:nth-child(4) {
+  width: 8%;
+  text-align: center;
+}
+
+/* 買値と売値 */
+#results th:nth-child(5),
+#results td:nth-child(5),
+#results td:nth-child(6),
+#results th:nth-child(6) {
+  width: 8%;
+  text-align: right;
+}
+
+#results tr.cursed {
+  background-color: #ffe6e6;
+}
+
+#results tr.blessed {
+  background-color: #ccffcc;
+}
+
+#results tr.non-default {
+  background-color: #e0e0e0;
+}
+
+#results tr.new-category {
+  border-top: 2px solid #000;
+}
+
+#results tbody tr:first-child {
+  border-top: none !important;
+}
+
+#results .highlight {
   font-weight: bold;
   font-size: 1.1em;
 }
