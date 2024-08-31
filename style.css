@@ -38,26 +38,26 @@ td:nth-child(2) {
 
 th:nth-child(7),
 td:nth-child(7) {
-  width: 35%; /* 備考 */
+  width: 24%; /* 備考 */
   white-space: normal; /* 折り返しを許可 */
   word-wrap: break-word; /* 長い単語を折り返す */
 }
 
 th:nth-child(1),
 td:nth-child(1) {
-  width: 5%; /* 分類 */
+  width: 8%; /* 分類 */
   text-align: center; /* 中央揃え */
 }
 
 th:nth-child(3),
 td:nth-child(3) {
-  width: 5%; /* 回数 */
+  width: 8%; /* 回数 */
   text-align: center; /* 中央揃え */
 }
 
 th:nth-child(4),
 td:nth-child(4) {
-  width: 5%; /* 状態 */
+  width: 8%; /* 状態 */
   text-align: center; /* 中央揃え */
 }
 
