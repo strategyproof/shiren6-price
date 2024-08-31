@@ -136,32 +136,51 @@ tbody tr:first-child {
   }
 
   .form-table {
-    min-width: 600px;
+    min-width: 300px; /* 600pxから300pxに変更 */
+    width: 100%;
   }
 
-  /* ラジオボタンのコンテナを横並びに保つ */
+  .form-table td:first-child {
+    width: auto;
+    white-space: nowrap;
+  }
+
+  .form-table td:not(:first-child) {
+    width: auto;
+  }
+
   .radio-container {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
   }
 
-  /* ラジオボタンのアイテムを横並びに保つ */
   .radio-item {
     display: flex;
     align-items: center;
     margin-right: 10px;
     margin-bottom: 5px;
+    white-space: nowrap;
   }
 
-  /* フォームテーブルのセルのパディングを調整 */
   .form-table td {
     padding: 5px 2px;
+    display: block;
+    width: 100%;
   }
 
-  /* ラベルの文字サイズを小さくする */
+  .form-table tr {
+    margin-bottom: 10px;
+    display: block;
+  }
+
   .form-table label {
     font-size: 14px;
+  }
+
+  #price {
+    width: 100%;
+    max-width: 200px;
   }
 }
 
