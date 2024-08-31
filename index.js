@@ -1,15 +1,14 @@
+let parsedData = [];
+
 document.addEventListener("DOMContentLoaded", function () {
-  // ページが読み込まれたときに全ての道具を表示
   fetch("prices.csv")
     .then((response) => response.text())
     .then((data) => {
-      window.csvData = data; // Store the CSV data globally
-      const results = parseCSV(data);
-      displayResults(results);
+      parsedData = parseCSV(data);
+      displayResults(parsedData);
     })
     .catch((error) => console.error("Error fetching CSV:", error));
 
-  // 値段を入力するフォームにフォーカスを当てる
   document.getElementById("price").focus();
 });
 
@@ -49,61 +48,58 @@ document.getElementById("price").addEventListener("keydown", function (event) {
 });
 
 function handleSearch() {
-  const price = document.getElementById("price").value;
-  const priceTarget = document.querySelector(
-    'input[name="price_target"]:checked'
-  )?.value;
-  const category = document.querySelector(
-    'input[name="category"]:checked'
-  )?.value;
-  const state = document.querySelector('input[name="state"]:checked')?.value;
-  const isNonDefault = document.getElementById("isNonDefault").checked;
+  const filters = {
+    price: document.getElementById("price").value,
+    priceTarget: document.querySelector('input[name="price_target"]:checked')
+      ?.value,
+    category: document.querySelector('input[name="category"]:checked')?.value,
+    state: document.querySelector('input[name="state"]:checked')?.value,
+    isNonDefault: document.getElementById("isNonDefault").checked,
+  };
 
-  if (window.csvData) {
-    const results = parseCSV(
-      window.csvData,
-      price,
-      priceTarget,
-      category,
-      state,
-      isNonDefault
-    );
-    displayResults(results);
-  } else {
-    console.error("CSV data is not loaded yet.");
-  }
+  const results = filterResults(parsedData, filters);
+  displayResults(results);
 }
 
-function parseCSV(data, price, priceTarget, category, state, isNonDefault) {
+function parseCSV(data) {
   const rows = data.split("\n").slice(1);
-  return rows
-    .map((row) => {
-      // カンマを含む数値を正しく処理するために、正規表現を使用してパース
-      const regex = /(".*?"|[^",\s]+)(?=\s*,|\s*$)/g;
-      return [...row.matchAll(regex)].map((match) =>
-        match[0].replace(/"/g, "")
-      );
-    })
-    .filter((item) => {
-      const matchesPrice =
-        !price ||
-        (priceTarget === "すべて" &&
-          (item[4].replace(/,/g, "") === price ||
-            item[5].replace(/,/g, "") === price)) ||
-        (priceTarget === "買値" && item[4].replace(/,/g, "") === price) ||
-        (priceTarget === "売値" && item[5].replace(/,/g, "") === price);
-      const matchesCategory =
-        !category || category === "すべて" || item[0] === category;
-      const matchesState =
-        !state ||
-        state === "すべて" ||
-        (state === "ふつう" && item[3] === "-") ||
-        item[3] === state;
-      const matchesNonDefault = !isNonDefault || item[7] !== "1";
-      return (
-        matchesPrice && matchesCategory && matchesState && matchesNonDefault
-      );
-    });
+  return rows.map((row) => {
+    const regex = /(".*?"|[^",\s]+)(?=\s*,|\s*$)/g;
+    return [...row.matchAll(regex)].map((match) => match[0].replace(/"/g, ""));
+  });
+}
+
+function filterResults(data, filters) {
+  return data.filter((item) => {
+    const matchesPrice = checkPriceMatch(
+      item,
+      filters.price,
+      filters.priceTarget
+    );
+    const matchesCategory =
+      !filters.category ||
+      filters.category === "すべて" ||
+      item[0] === filters.category;
+    const matchesState = checkStateMatch(item, filters.state);
+    const matchesNonDefault = !filters.isNonDefault || item[7] !== "1";
+    return matchesPrice && matchesCategory && matchesState && matchesNonDefault;
+  });
+}
+
+function checkPriceMatch(item, price, priceTarget) {
+  if (!price) return true;
+  const buyPrice = item[4].replace(/,/g, "");
+  const sellPrice = item[5].replace(/,/g, "");
+  return (
+    (priceTarget === "すべて" && (buyPrice === price || sellPrice === price)) ||
+    (priceTarget === "買値" && buyPrice === price) ||
+    (priceTarget === "売値" && sellPrice === price)
+  );
+}
+
+function checkStateMatch(item, state) {
+  if (!state || state === "すべて") return true;
+  return (state === "ふつう" && item[3] === "-") || item[3] === state;
 }
 
 function displayResults(results) {

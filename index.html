@@ -12,7 +12,14 @@
         <tr>
           <td><label for="price">値段:</label></td>
           <td colspan="3">
-            <input type="text" id="price" name="price" required />
+            <input
+              type="text"
+              id="price"
+              name="price"
+              required
+              inputmode="numeric"
+              pattern="[0-9]*"
+            />
           </td>
         </tr>
         <tr>
