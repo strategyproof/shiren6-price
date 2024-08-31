@@ -13,63 +13,63 @@ form {
 
 #results {
   margin-top: 20px;
-  max-width: 1000px; /* テーブルの最大幅を制限 */
-  overflow-x: auto; /* 横スクロールを許可 */
+  max-width: 1000px;
+  overflow-x: auto;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
-  table-layout: fixed; /* 列幅を固定 */
+  table-layout: fixed;
 }
 
 th,
 td {
-  padding: 5px; /* パディングを減らして行の高さを狭く */
+  padding: 5px;
   border: 1px solid #ccc;
-  font-size: 14px; /* フォントサイズを少し大きく */
-  white-space: nowrap; /* 折り返ししない */
+  font-size: 14px;
+  white-space: nowrap;
 }
 
 th:nth-child(2),
 td:nth-child(2) {
-  width: 22%; /* 名前 */
+  width: 22%;
 }
 
 th:nth-child(7),
 td:nth-child(7) {
-  width: 22%; /* 備考 */
+  width: 22%;
   white-space: nowrap;
 }
 
 th:nth-child(1),
 td:nth-child(1) {
-  width: 8%; /* 分類 */
-  text-align: center; /* 中央揃え */
+  width: 8%;
+  text-align: center;
 }
 
 th:nth-child(3),
 td:nth-child(3) {
-  width: 8%; /* 回数 */
-  text-align: center; /* 中央揃え */
+  width: 8%;
+  text-align: center;
 }
 
 th:nth-child(4),
 td:nth-child(4) {
-  width: 8%; /* 状態 */
-  text-align: center; /* 中央揃え */
+  width: 8%;
+  text-align: center;
 }
 
 th:nth-child(5),
 td:nth-child(5) {
-  width: 8%; /* 買値 */
-  text-align: right; /* 右揃え */
+  width: 8%;
+  text-align: right;
 }
 
 th:nth-child(6),
 td:nth-child(6) {
-  width: 8%; /* 売値 */
-  text-align: right; /* 右揃え */
+  width: 8%;
+  text-align: right;
 }
 
 tr.cursed {
@@ -84,52 +84,151 @@ tr.artificial {
   background-color: gray;
 }
 
-/* 名前と備考のヘッダーを左寄せにする */
 table th:nth-child(2),
 table th:nth-child(7) {
   text-align: left;
 }
 
-/* 買値と売値のヘッダーを中央揃えにする */
 table th:nth-child(5),
 table th:nth-child(6) {
   text-align: center;
 }
 
-/* 買値と売値のセルは右揃えのまま */
 table td:nth-child(5),
 table td:nth-child(6) {
   text-align: right;
 }
 
-/* 分類の境目に太線を引く */
 tr.new-category {
   border-top: 2px solid #000;
 }
 
-/* 最初の行（ヘッダーの次の行）の上の線を消す */
 tbody tr:first-child {
   border-top: none !important;
 }
 
-/* フォーム要素のスタイリング */
 #search-form {
-  font-size: 18px; /* フォームの文字サイズを小さく */
+  font-size: 18px;
 }
 
 #search-form label {
-  margin-right: 10px; /* ラベル間の間隔を調整 */
+  margin-right: 10px;
 }
 
 #search-form input[type="radio"],
 #search-form input[type="checkbox"] {
-  margin-right: 1px; /* ラジオボタンとチェックボックスの右側の間隔を調整 */
+  margin-right: 1px;
 }
 
-/* 値段入力フィールドのスタイリング */
 #price {
-  width: 100px; /* 幅を調整 */
-  font-size: 18px; /* 文字サイズ */
-  text-align: right; /* 文字を右寄せに */
-  padding-right: 5px; /* 右側に少しパディングを追加 */
+  width: 90px;
+  font-size: 16px;
+  text-align: right;
+  padding: 2px 4px;
+  margin: 0;
+  vertical-align: middle;
+}
+
+@media (max-width: 600px) {
+  #results,
+  .form-table {
+    overflow-x: auto;
+  }
+
+  .form-table {
+    min-width: 600px;
+  }
+}
+
+.form-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.form-table th,
+.form-table td {
+  padding: 2px 4px;
+  border: none;
+  font-size: 16px;
+  line-height: 1.2;
+  vertical-align: middle;
+}
+
+.form-table td:first-child {
+  width: 45px;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.form-table td:not(:first-child) {
+  width: 99%;
+}
+
+.form-table input[type="radio"],
+.form-table input[type="checkbox"],
+.form-table label {
+  vertical-align: middle;
+}
+
+.radio-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.radio-item {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  margin-bottom: 2px;
+}
+
+#results table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+#results th,
+#results td {
+  padding: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.form-table input[type="radio"],
+.form-table input[type="checkbox"] {
+  margin-right: 3px;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+}
+
+.form-table label {
+  vertical-align: middle;
+  display: inline-block;
+  line-height: 1.2;
+  padding-top: 2px;
+}
+
+input[type="checkbox"] {
+  position: relative;
+  top: -1px;
+}
+
+.form-table input[type="checkbox"] {
+  margin-right: 3px;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+}
+
+.form-table input[type="checkbox"] + label {
+  vertical-align: middle;
+  display: inline-block;
+  line-height: 1.2;
+  padding-top: 1px;
+  position: relative;
 }

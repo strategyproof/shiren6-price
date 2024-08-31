@@ -8,60 +8,137 @@
   </head>
   <body>
     <form id="search-form">
-      <label for="price">値段:</label>
-      <input type="text" id="price" name="price" required />
-      <div>
-        <label> 売買:</label>
-        <input
-          type="radio"
-          id="price_all"
-          name="price_target"
-          value="すべて"
-          checked
-        />
-        <label for="price_all">すべて</label>
-        <input type="radio" id="price_buy" name="price_target" value="買値" />
-        <label for="price_buy">買値</label>
-        <input type="radio" id="price_sell" name="price_target" value="売値" />
-        <label for="price_sell">売値</label>
-      </div>
-      <div>
-        <label>分類:</label>
-        <input
-          type="radio"
-          id="category0"
-          name="category"
-          value="すべて"
-          checked
-        />
-        <label for="category0">すべて</label>
-        <input type="radio" id="category1" name="category" value="腕輪" />
-        <label for="category1">腕輪</label>
-        <input type="radio" id="category2" name="category" value="草" />
-        <label for="category2">草</label>
-        <input type="radio" id="category3" name="category" value="巻物" />
-        <label for="category3">巻物</label>
-        <input type="radio" id="category4" name="category" value="杖" />
-        <label for="category4">杖</label>
-        <input type="radio" id="category5" name="category" value="壺" />
-        <label for="category5">壺</label>
-      </div>
-      <div>
-        <label>状態:</label>
-        <input type="radio" id="state0" name="state" value="すべて" checked />
-        <label for="state0">すべて</label>
-        <input type="radio" id="state3" name="state" value="ふつう" />
-        <label for="state3">ふつう</label>
-        <input type="radio" id="state1" name="state" value="祝福" />
-        <label for="state1">祝福</label>
-        <input type="radio" id="state2" name="state" value="呪い" />
-        <label for="state2">呪い</label>
-      </div>
-      <div>
-        <label>表示:</label>
-        <input type="checkbox" id="isNonDefault" name="isNonDefault" checked />
-        <label for="isNonDefault">初期値のみ</label>
-      </div>
+      <table class="form-table">
+        <tr>
+          <td><label for="price">値段:</label></td>
+          <td colspan="3">
+            <input type="text" id="price" name="price" required />
+          </td>
+        </tr>
+        <tr>
+          <td><label>売買:</label></td>
+          <td colspan="3">
+            <div class="radio-container">
+              <div class="radio-item">
+                <input
+                  type="radio"
+                  id="price_all"
+                  name="price_target"
+                  value="すべて"
+                  checked
+                />
+                <label for="price_all">すべて</label>
+              </div>
+              <div class="radio-item">
+                <input
+                  type="radio"
+                  id="price_buy"
+                  name="price_target"
+                  value="買値"
+                />
+                <label for="price_buy">買値</label>
+              </div>
+              <div class="radio-item">
+                <input
+                  type="radio"
+                  id="price_sell"
+                  name="price_target"
+                  value="売値"
+                />
+                <label for="price_sell">売値</label>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><label>分類:</label></td>
+          <td colspan="3">
+            <div class="radio-container">
+              <div class="radio-item">
+                <input
+                  type="radio"
+                  id="category0"
+                  name="category"
+                  value="すべて"
+                  checked
+                />
+                <label for="category0">すべて</label>
+              </div>
+              <div class="radio-item">
+                <input
+                  type="radio"
+                  id="category1"
+                  name="category"
+                  value="腕輪"
+                />
+                <label for="category1">腕輪</label>
+              </div>
+              <div class="radio-item">
+                <input type="radio" id="category2" name="category" value="草" />
+                <label for="category2">草</label>
+              </div>
+              <div class="radio-item">
+                <input
+                  type="radio"
+                  id="category3"
+                  name="category"
+                  value="巻物"
+                />
+                <label for="category3">巻物</label>
+              </div>
+              <div class="radio-item">
+                <input type="radio" id="category4" name="category" value="杖" />
+                <label for="category4">杖</label>
+              </div>
+              <div class="radio-item">
+                <input type="radio" id="category5" name="category" value="壺" />
+                <label for="category5">壺</label>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><label>状態:</label></td>
+          <td colspan="3">
+            <div class="radio-container">
+              <div class="radio-item">
+                <input
+                  type="radio"
+                  id="state0"
+                  name="state"
+                  value="すべて"
+                  checked
+                />
+                <label for="state0">すべて</label>
+              </div>
+              <div class="radio-item">
+                <input type="radio" id="state3" name="state" value="ふつう" />
+                <label for="state3">ふつう</label>
+              </div>
+              <div class="radio-item">
+                <input type="radio" id="state1" name="state" value="祝福" />
+                <label for="state1">祝福</label>
+              </div>
+              <div class="radio-item">
+                <input type="radio" id="state2" name="state" value="呪い" />
+                <label for="state2">呪い</label>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><label>表示:</label></td>
+          <td colspan="3">
+            <input
+              type="checkbox"
+              id="isNonDefault"
+              name="isNonDefault"
+              checked
+            />
+            <label for="isNonDefault">初期値のみ</label>
+          </td>
+        </tr>
+      </table>
     </form>
     <div id="results">
       <!-- 検索結果がここに表示されます -->
