@@ -138,6 +138,31 @@ tbody tr:first-child {
   .form-table {
     min-width: 600px;
   }
+
+  /* ラジオボタンのコンテナを横並びに保つ */
+  .radio-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  /* ラジオボタンのアイテムを横並びに保つ */
+  .radio-item {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    margin-bottom: 5px;
+  }
+
+  /* フォームテーブルのセルのパディングを調整 */
+  .form-table td {
+    padding: 5px 2px;
+  }
+
+  /* ラベルの文字サイズを小さくする */
+  .form-table label {
+    font-size: 14px;
+  }
 }
 
 .form-table {
