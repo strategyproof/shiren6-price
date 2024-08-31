@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   fetch("prices.csv")
     .then((response) => response.text())
     .then((data) => {
+      window.csvData = data; // Store the CSV data globally
       const results = parseCSV(data);
       displayResults(results);
     })
@@ -58,20 +59,19 @@ function handleSearch() {
   const state = document.querySelector('input[name="state"]:checked')?.value;
   const isNonDefault = document.getElementById("isNonDefault").checked;
 
-  fetch("prices.csv")
-    .then((response) => response.text())
-    .then((data) => {
-      const results = parseCSV(
-        data,
-        price,
-        priceTarget,
-        category,
-        state,
-        isNonDefault
-      );
-      displayResults(results);
-    })
-    .catch((error) => console.error("Error fetching CSV:", error));
+  if (window.csvData) {
+    const results = parseCSV(
+      window.csvData,
+      price,
+      priceTarget,
+      category,
+      state,
+      isNonDefault
+    );
+    displayResults(results);
+  } else {
+    console.error("CSV data is not loaded yet.");
+  }
 }
 
 function parseCSV(data, price, priceTarget, category, state, isNonDefault) {
