@@ -109,5 +109,5 @@ body {
 }
 
 .price-cell a {
-  margin-left: 10px;
+  margin-left: auto; /* 右端にリンクを移動 */
 }
