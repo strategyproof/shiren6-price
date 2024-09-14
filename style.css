@@ -102,3 +102,12 @@ body {
   font-weight: bold;
   font-size: 1.1em;
 }
+
+.price-cell {
+  display: flex;
+  align-items: center;
+}
+
+.price-cell a {
+  margin-left: 10px;
+}
